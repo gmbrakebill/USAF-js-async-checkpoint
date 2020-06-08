@@ -1,9 +1,21 @@
-console.log("hello world")
-console.log(typeof undefined); // we have left off the label for this message, but will include it for the rest
-console.log('type of true:', typeof true);
-console.log('type of false:', typeof false);
-console.log('type of 9', typeof 9);
-console.log('type of 4.0:', typeof 4.0);
-console.log('type of "a string of characters":', typeof "a string of characters");
-console.log('Is an array?:', Array.isArray([3, 4, 5]));
-console.log('Is an array?:', Array.isArray({a: 1}));
+//input - file list of pokemon names (seperated by a new line) and logs each pokemon's types
+//according to the pokeapi.co API
+
+//output - Pokemon's types
+
+//Constraints - none
+
+//Edge Cases - pokemon name might not be in API, user error - typo
+ //-----------------------------------------------------------------
+
+//Pseudocode
+//reads from a file while converting contents of each line to a string
+
+//take the array and convert to JSON
+
+//loop through elements of the array
+//pass each element to a function that fetches each the name of the pokemon
+//from there, retrieve their type, and append it to the passed in file
+
+
+console.log("still working thru this")
