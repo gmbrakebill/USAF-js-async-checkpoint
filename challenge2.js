@@ -9,13 +9,34 @@
  //-----------------------------------------------------------------
 
 //Pseudocode
-//reads from a file while converting contents of each line to a string
 
-//take the array and convert to JSON
+const fetch = require('node-fetch');
+var fs = require("fs");
 
-//loop through elements of the array
-//pass each element to a function that fetches each the name of the pokemon
-//from there, retrieve their type, and append it to the passed in file
+//read from from
+fs.readFile("input.txt", (err, data) => 
+{
+    //make promise to return array of content on each line
+    Promise.all(data.toString().split("\n")
+        .map(pokemon => 
+            {
+            return fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon.trim()}`) //fetch call for all pokemon
+                                                                                // with .trim to remove white spaces
+                .then(response => 
+                {
+                        return response.json() //return response as JSON file
 
-
-console.log("still working thru this")
+                })
+                .then(data => 
+                    {
+                    return `${pokemon}: ${data.types.map(t => t.type.name).join(", ")}` //capturing pokemon types joining with , 
+                })
+        }))
+        .then(results => 
+            {
+            results.forEach((item) => //looping through to log each item
+             {
+                console.log(item);
+            })
+        })
+})
